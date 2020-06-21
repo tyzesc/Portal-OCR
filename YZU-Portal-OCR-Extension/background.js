@@ -1,0 +1,1 @@
+chrome.browserAction.onClicked.addListener(function(tab) { alert('歡迎來信 tyzescgm@gmail.com') });
