@@ -5,7 +5,8 @@ chrome.storage.sync.get(defaults, settings => {
     document.getElementById('Txt_Password').value = settings.psw;
 
     let image = new MarvinImage();
-    image.load('https://portalx.yzu.edu.tw/PortalSocialVB/SelRandomImage.aspx', function() {
+    let img_url = document.querySelector('#VeriCodePage').src;
+    image.load(img_url, function() {
         if (settings.showpic) {
             let canvas = document.createElement('canvas');
             canvas.setAttribute('width', 112);

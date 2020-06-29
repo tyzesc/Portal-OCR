@@ -1,7 +1,7 @@
 {
     "name": "潑頭天眼通",
     "description": "基於 Tesseract 與 Marvinj 之模糊影像辨識，自動填入學務系統驗證碼。",
-    "version": "1.1",
+    "version": "1.2",
     "manifest_version": 2,
     "browser_action": {
         "default_icon": "yzu.png"
