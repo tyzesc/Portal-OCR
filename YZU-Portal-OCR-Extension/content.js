@@ -7,8 +7,10 @@ chrome.storage.sync.get(defaults, settings => {
     let image = new MarvinImage();
     let img_url = document.querySelector('#VeriCodePage').src;
     image.load(img_url, function() {
+        let banner = document.querySelector("#imgRCode").parentNode.parentNode.parentNode.rows[4];
         if (settings.showpic) {
             let canvas = document.createElement('canvas');
+            banner.innerHTML = "<td colspan='5'><h3 style='background: #1FA2FF;background: -webkit-linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF);background: linear-gradient(to right, #A6FFCB, #12D8FA, #1FA2FF);'>正在自動辨識</h3></td>";
             canvas.setAttribute('width', 112);
             canvas.setAttribute('height', 45);
             let elem = document.querySelector('#imgRCode').parentElement;
@@ -32,6 +34,8 @@ chrome.storage.sync.get(defaults, settings => {
             await worker.initialize('eng');
             const { data: { text } } = await worker.recognize(imageOut.toBlob());
             document.getElementById('Txt_VeriCode').value = text;
+
+            banner.innerHTML = "";
 
             if (settings.autologin)
                 document.querySelector('#ibnSubmit').click();
