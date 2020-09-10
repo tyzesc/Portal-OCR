@@ -2,15 +2,15 @@
 function save_options() {
     let sid = document.getElementById('sid').value
     let psw = document.getElementById('psw').value
-    let show = document.getElementById('show').checked
     let auto = document.getElementById('auto').checked
+    let timeout = document.getElementById('timeout').value
 
 
     chrome.storage.sync.set({
         sid: sid,
         psw: psw,
-        showpic: show,
-        autologin: auto
+        autologin: auto,
+        timeout: timeout
     }, function() {
         // Update status to let user know options were saved.
         var status = document.getElementById('status')
@@ -28,13 +28,13 @@ function restore_options() {
     chrome.storage.sync.get({
         sid: '',
         psw: '',
-        showpic: false,
-        autologin: false
+        autologin: false,
+        timeout: 1000
     }, function(items) {
         document.getElementById('sid').value = items.sid
         document.getElementById('psw').value = items.psw
-        document.getElementById('show').checked = items.showpic
         document.getElementById('auto').checked = items.autologin
+        document.getElementById('timeout').value = items.timeout
     })
 }
 document.addEventListener('DOMContentLoaded', restore_options)
